@@ -45,6 +45,7 @@ namespace Helpers.Common
         {
             Contract.Requires<ArgumentNullException>(disposeAction != null, "disposeAction cannot be null");
             Contract.Ensures(_disposeAction != null);
+            Contract.Ensures(!_disposed);
 
             _disposeAction = disposeAction;
             _disposed = false;
