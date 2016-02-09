@@ -40,9 +40,9 @@ namespace Helpers.TestFramework
         /// </summary>
         protected ContextBase()
         {
-            _disposed = false;
+            Contract.Ensures(!_disposed);
 
-            SetUp();
+            _disposed = false;
         }
 
         /// <summary>
@@ -55,6 +55,7 @@ namespace Helpers.TestFramework
 
         /// <summary>
         /// Implement in derived classes for test setup logic.
+        /// Should be called from parameterless constructor.
         /// </summary>
         protected virtual void SetUp() {}
 
