@@ -1,16 +1,15 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Tests")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Helpers.TestFramework")]
+[assembly: AssemblyDescription("Helper classes for unit and other tests")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tests")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
+[assembly: AssemblyCompany("Wanderer")]
+[assembly: AssemblyProduct("Helpers.TestFramework")]
+[assembly: AssemblyCopyright("Copyright © Wanderer 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
