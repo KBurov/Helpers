@@ -52,6 +52,8 @@ namespace Helpers.Common.Extensions
         /// </summary>
         public static bool IsInt(this string s)
         {
+            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+
             int dummy;
 
             return !string.IsNullOrWhiteSpace(s) && int.TryParse(s, out dummy);
@@ -62,6 +64,8 @@ namespace Helpers.Common.Extensions
         /// </summary>
         public static bool IsUInt(this string s)
         {
+            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+
             uint dummy;
 
             return !string.IsNullOrWhiteSpace(s) && uint.TryParse(s, out dummy);
@@ -72,6 +76,8 @@ namespace Helpers.Common.Extensions
         /// </summary>
         public static bool IsDecimal(this string s)
         {
+            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+
             decimal dummy;
 
             return !string.IsNullOrWhiteSpace(s) && decimal.TryParse(s, out dummy);
