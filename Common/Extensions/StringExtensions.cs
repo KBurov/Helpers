@@ -16,6 +16,7 @@ namespace Helpers.Common.Extensions
         public static string FirstCharToUpper(this string s)
         {
             Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+            Contract.Ensures(Contract.Result<string>() != null);
 
             if (s.Length > 1) {
                 return char.ToUpper(s[0]) + s.Substring(1);
