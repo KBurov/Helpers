@@ -48,8 +48,10 @@ namespace Helpers.Common.Extensions
 
         #region Is... methods
         /// <summary>
-        /// Returns true if <paramref name="s" /> contains <see cref="int" />
+        /// Returns true if <paramref name="s" /> contains <see cref="int" />.
         /// </summary>
+        /// <param name="s">a string value</param>
+        /// <returns>true is <paramref name="s"/> contains valid <see cref="int"/> value</returns>
         public static bool IsInt(this string s)
         {
             Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
@@ -60,8 +62,10 @@ namespace Helpers.Common.Extensions
         }
 
         /// <summary>
-        /// Returns true if <paramref name="s" /> contains <see cref="uint" />
+        /// Returns true if <paramref name="s" /> contains <see cref="uint" />.
         /// </summary>
+        /// <param name="s">a string value</param>
+        /// <returns>true is <paramref name="s"/> contains valid <see cref="uint"/> value</returns>
         public static bool IsUInt(this string s)
         {
             Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
@@ -72,8 +76,10 @@ namespace Helpers.Common.Extensions
         }
 
         /// <summary>
-        /// Returns true if <paramref name="s" /> contains <see cref="decimal" />
+        /// Returns true if <paramref name="s" /> contains <see cref="decimal" />.
         /// </summary>
+        /// <param name="s">a string value</param>
+        /// <returns>true is <paramref name="s"/> contains valid <see cref="decimal"/> value</returns>
         public static bool IsDecimal(this string s)
         {
             Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
