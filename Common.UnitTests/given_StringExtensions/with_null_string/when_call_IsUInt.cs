@@ -9,7 +9,7 @@ namespace Helpers.Common.UnitTests.given_StringExtensions.with_null_string
     public class when_call_IsUInt : Context
     {
         [Fact]
-        public void then_then_throws_exception()
+        public void then_throws_exception()
         {
             Assert.Throws<ArgumentNullException>(() => _str.IsUInt());
         }
