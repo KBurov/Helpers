@@ -114,6 +114,12 @@
     <Compile Include="given_Retry\with_not_null_func\with_numberOfRetries_greater_than_zero\when_call_Times.cs" />
     <Compile Include="given_Retry\with_null_action\when_call_Times.cs" />
     <Compile Include="given_Retry\with_null_func\when_call_Times.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\Context.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_FirstCharToUpper.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_IsDecimal.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_IsInt.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_IsUInt.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_Reverse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +132,10 @@
       <Name>TestFramework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="given_StringExtensions\with_empty_string\" />
+    <Folder Include="given_StringExtensions\with_not_empty_string\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
