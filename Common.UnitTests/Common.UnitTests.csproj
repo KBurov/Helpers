@@ -76,6 +76,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ploeh.AutoFixture, Version=3.40.0.0, Culture=neutral, PublicKeyToken=b24654c590009d4f, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoFixture.3.40.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -120,6 +124,9 @@
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsInt.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsUInt.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_Reverse.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\Context.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\when_call_FirstCharToUpper.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\when_call_Reverse.cs" />
     <Compile Include="given_StringExtensions\with_null_string\Context.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_FirstCharToUpper.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsDecimal.cs" />
@@ -138,9 +145,7 @@
       <Name>TestFramework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="given_StringExtensions\with_not_empty_string\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
