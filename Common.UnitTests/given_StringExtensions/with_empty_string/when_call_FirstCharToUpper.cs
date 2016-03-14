@@ -1,6 +1,4 @@
-﻿using System;
-
-using Helpers.Common.Extensions;
+﻿using Helpers.Common.Extensions;
 
 using Xunit;
 
