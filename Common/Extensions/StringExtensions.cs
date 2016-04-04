@@ -15,6 +15,7 @@ namespace Helpers.Common.Extensions
         /// <returns>the specified string converted to string with the first capital letter</returns>
         public static string FirstCharToUpper(this string s)
         {
+            // http://stackoverflow.com/questions/4135317/make-first-letter-of-a-string-upper-case-for-maximum-performance
             Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
             Contract.Ensures(Contract.Result<string>() != null);
 
@@ -30,7 +31,7 @@ namespace Helpers.Common.Extensions
         /// </summary>
         /// <param name="s">the string to convert</param>
         /// <returns>the specified string converted to string with reverted value</returns>
-        public static string Reverse(this string s)
+        public static string SimpleReverse(this string s)
         {
             // TODO: Look at http://stackoverflow.com/questions/228038/best-way-to-reverse-a-string
             Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");

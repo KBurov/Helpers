@@ -6,12 +6,12 @@ using Xunit;
 
 namespace Helpers.Common.UnitTests.given_StringExtensions.with_null_string
 {
-    public class when_call_Reverse : Context
+    public class when_call_SimpleReverse : Context
     {
         [Fact]
         public void then_throws_exception()
         {
-            Assert.Throws<ArgumentNullException>(() => _str.Reverse());
+            Assert.Throws<ArgumentNullException>(() => _str.SimpleReverse());
         }
     }
 }

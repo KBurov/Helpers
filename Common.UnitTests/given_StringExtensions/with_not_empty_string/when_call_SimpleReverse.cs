@@ -6,11 +6,11 @@ using Xunit;
 
 namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string
 {
-    public class when_call_Reverse : Context
+    public class when_call_SimpleReverse : Context
     {
         private string _expectedValue;
 
-        public when_call_Reverse()
+        public when_call_SimpleReverse()
         {
             SetUp();
         }
@@ -25,7 +25,7 @@ namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string
         [Fact]
         public void then_returns_with_reverted_value()
         {
-            var result = _sut.Reverse();
+            var result = _sut.SimpleReverse();
 
             Assert.Equal(_expectedValue, result);
         }

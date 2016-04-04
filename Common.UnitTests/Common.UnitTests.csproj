@@ -123,16 +123,16 @@
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsDecimal.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsInt.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsUInt.cs" />
-    <Compile Include="given_StringExtensions\with_empty_string\when_call_Reverse.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_SimpleReverse.cs" />
     <Compile Include="given_StringExtensions\with_not_empty_string\Context.cs" />
     <Compile Include="given_StringExtensions\with_not_empty_string\when_call_FirstCharToUpper.cs" />
-    <Compile Include="given_StringExtensions\with_not_empty_string\when_call_Reverse.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\when_call_SimpleReverse.cs" />
     <Compile Include="given_StringExtensions\with_null_string\Context.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_FirstCharToUpper.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsDecimal.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsInt.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsUInt.cs" />
-    <Compile Include="given_StringExtensions\with_null_string\when_call_Reverse.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_SimpleReverse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
