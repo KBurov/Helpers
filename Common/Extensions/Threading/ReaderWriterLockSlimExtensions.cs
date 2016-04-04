@@ -19,6 +19,7 @@ namespace Helpers.Common.Extensions.Threading
         public static IDisposable GetReadLock(this ReaderWriterLockSlim locker)
         {
             Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
+            Contract.Ensures(Contract.Result<IDisposable>() != null);
 
             locker.EnterReadLock();
 
@@ -33,6 +34,7 @@ namespace Helpers.Common.Extensions.Threading
         public static IDisposable GetUpgradeableReadLock(this ReaderWriterLockSlim locker)
         {
             Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
+            Contract.Ensures(Contract.Result<IDisposable>() != null);
 
             locker.EnterUpgradeableReadLock();
 
@@ -47,6 +49,7 @@ namespace Helpers.Common.Extensions.Threading
         public static IDisposable GetWriteLock(this ReaderWriterLockSlim locker)
         {
             Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
+            Contract.Ensures(Contract.Result<IDisposable>() != null);
 
             locker.EnterWriteLock();
 
