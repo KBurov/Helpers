@@ -17,9 +17,11 @@ namespace Helpers.Common
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
+            if (!_disposed) {
+                Dispose(true);
 
-            GC.SuppressFinalize(this);
+                GC.SuppressFinalize(this);
+            }
         }
 
         private void Dispose(bool disposing)
@@ -57,6 +59,12 @@ namespace Helpers.Common
         ~DisposeAction()
         {
             Dispose(false);
+        }
+
+        [ContractInvariantMethod]
+        private void Invariant()
+        {
+            Contract.Invariant(_disposeAction != null);
         }
     }
 }
