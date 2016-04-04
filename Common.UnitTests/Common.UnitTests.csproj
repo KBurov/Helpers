@@ -110,6 +110,10 @@
     <Compile Include="given_DisposeAction\with_not_null_action\when_create_DisposeAction.cs" />
     <Compile Include="given_DisposeAction\with_not_null_action\when_dispose_DisposeAction.cs" />
     <Compile Include="given_DisposeAction\with_null_action\when_create_DisposeAction.cs" />
+    <Compile Include="given_ReaderWriterLockSlim\Context.cs" />
+    <Compile Include="given_ReaderWriterLockSlim\with_null_locker\when_call_GetReadLock.cs" />
+    <Compile Include="given_ReaderWriterLockSlim\with_null_locker\when_call_GetUpgradeableReadLock.cs" />
+    <Compile Include="given_ReaderWriterLockSlim\with_null_locker\when_call_GetWriteLock.cs" />
     <Compile Include="given_Retry\with_not_null_action\Context.cs" />
     <Compile Include="given_Retry\with_not_null_action\with_numberOfRetries_equal_zero\when_call_Times.cs" />
     <Compile Include="given_Retry\with_not_null_action\with_numberOfRetries_greater_than_zero\when_call_Times.cs" />
