@@ -132,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DisposeAction.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Extensions\Threading\ReaderWriterLockSlimExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
