@@ -110,6 +110,14 @@
     <Compile Include="given_DisposeAction\with_not_null_action\when_create_DisposeAction.cs" />
     <Compile Include="given_DisposeAction\with_not_null_action\when_dispose_DisposeAction.cs" />
     <Compile Include="given_DisposeAction\with_null_action\when_create_DisposeAction.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\TestComparer.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_empty_sources\Context.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_empty_sources\with_not_null_comparer\when_call_MergeSortedEnumerable.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_empty_sources\with_null_comparer\when_call_MergeSortedEnumerable.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_not_empty_sources\Context.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_not_empty_sources\with_not_null_comparer\when_call_MergeSortedEnumerable.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_not_empty_sources\with_null_comparer\when_call_MergeSortedEnumerable.cs" />
+    <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_null_sources\when_call_MergeSortedEnumerable.cs" />
     <Compile Include="given_ReaderWriterLockSlim\with_not_null_locker\and_call_GetReadLock\when_call_TryEnterReadLock.cs" />
     <Compile Include="given_ReaderWriterLockSlim\with_not_null_locker\and_call_GetReadLock\when_call_TryEnterReadLock_from_another_thread.cs" />
     <Compile Include="given_ReaderWriterLockSlim\with_not_null_locker\and_call_GetReadLock\when_call_TryEnterUpgradeableReadLock.cs" />
