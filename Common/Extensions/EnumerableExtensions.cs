@@ -17,7 +17,7 @@ namespace Helpers.Common.Extensions
         /// <param name="sources">collection of sorted enumerables</param>
         /// <param name="comparer">enumerable elemenets comparer (<see cref="IComparer{T}"/></param>
         /// <returns>object with <see cref="IEnumerator{T}"/> interface</returns>
-        public static IEnumerable<T> MergeSortedEnumerable<T>(IEnumerable<T>[] sources, IComparer<T> comparer)
+        public static IEnumerable<T> MergeSortedEnumerable<T>(this IEnumerable<T>[] sources, IComparer<T> comparer)
         {
             Contract.Requires<ArgumentNullException>(sources != null, "sources cannot be null");
             Contract.Requires<ArgumentNullException>(comparer != null, "comparer cannot be null");
