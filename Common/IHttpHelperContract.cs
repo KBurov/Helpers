@@ -15,12 +15,25 @@ namespace Helpers.Common
         /// <summary>
         /// Implements HTTP GET method.
         /// </summary>
-        /// <param name="url">the URI that identifies the Internet resource</param>
+        /// <param name="url">a URI that identifies the Internet resource</param>
         /// <param name="preferedEncoding">the prefered encoding for received HTML page</param>
         /// <returns>A result of HTTP GET method for provided parameters</returns>
         string IHttpHelper.Get(string url, Encoding preferedEncoding)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(url), "url cannot be null or empty");
+
+            return default(string);
+        }
+
+        /// <summary>
+        /// Implements HTTP GET method.
+        /// </summary>
+        /// <param name="uri">a <see cref="Uri"/> containing the URI of the requested resource</param>
+        /// <param name="preferedEncoding">the prefered encoding for received HTML page</param>
+        /// <returns>A result of HTTP GET method for provided parameters</returns>
+        string IHttpHelper.Get(Uri uri, Encoding preferedEncoding)
+        {
+            Contract.Requires<ArgumentNullException>(uri != null, "uri cannot be null");
 
             return default(string);
         }
