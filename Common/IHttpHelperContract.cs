@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Text;
 
@@ -66,6 +67,19 @@ namespace Helpers.Common
             Contract.Requires<ArgumentNullException>(uri != null, "uri cannot be null");
 
             return default(string);
+        }
+
+        /// <summary>
+        /// Returns value of form "action" attribute.
+        /// </summary>
+        /// <param name="htmlPage">a HTML page content</param>
+        /// <param name="formName">a form name</param>
+        /// <returns>A collection of attribute "action" values</returns>
+        IEnumerable<string> IHttpHelper.GetFormAction(string htmlPage, string formName)
+        {
+            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(htmlPage), "htmlPage cannot be null or empty");
+
+            return default(IEnumerable<string>);
         }
         #endregion
     }

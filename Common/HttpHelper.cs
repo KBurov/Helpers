@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Helpers.Common
 {
@@ -11,6 +13,8 @@ namespace Helpers.Common
     /// </summary>
     public sealed class HttpHelper : IHttpHelper
     {
+        private const RegexOptions RegularExpressionOptions = RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Singleline;
+
         #region IHttpHelper implementation
         /// <summary>
         /// Implements HTTP GET method.
@@ -66,6 +70,44 @@ namespace Helpers.Common
             var request = (HttpWebRequest) WebRequest.Create(uri);
 
             return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
+        }
+
+        /// <summary>
+        /// Returns value of form "action" attribute.
+        /// </summary>
+        /// <param name="htmlPage">a HTML page content</param>
+        /// <param name="formName">a form name</param>
+        /// <returns>A collection of attribute "action" values</returns>
+        public IEnumerable<string> GetFormAction(string htmlPage, string formName = null)
+        {
+            if (formName != null) {
+                var regex = new Regex(
+                    $@"(?:<form[^>]*?(?:(?:name=""{formName}"")[^>]*?action=""(?<action1>[^""]*))|(?:action=""(?<action2>[^""]*)""[^>]*?(?:name=""{formName}"")))",
+                    RegularExpressionOptions);
+                var actionMatches = regex.Matches(htmlPage);
+
+                foreach (Match match in actionMatches) {
+                    if (match.Success) {
+                        if (match.Groups["action1"].Success) {
+                            yield return match.Groups["action1"].Value;
+                        }
+
+                        if (match.Groups["action2"].Success) {
+                            yield return match.Groups["action2"].Value;
+                        }
+                    }
+                }
+            }
+            else {
+                var regex = new Regex(@"(?:<form\s*[^>]*?action=""(?<action>[^""]*))", RegularExpressionOptions);
+                var actionMatches = regex.Matches(htmlPage);
+
+                foreach (Match match in actionMatches) {
+                    if (match.Success) {
+                        yield return match.Groups["action"].Value;
+                    }
+                }
+            }
         }
         #endregion
 

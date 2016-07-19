@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Text;
 
@@ -45,5 +46,13 @@ namespace Helpers.Common
         /// <param name="preferedEncoding">a prefered encoding for result</param>
         /// <returns>A result of HTTP POST method for provided parameters</returns>
         string Post(Uri uri, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null);
+
+        /// <summary>
+        /// Returns value of form "action" attribute.
+        /// </summary>
+        /// <param name="htmlPage">a HTML page content</param>
+        /// <param name="formName">a form name</param>
+        /// <returns>A collection of attribute "action" values</returns>
+        IEnumerable<string> GetFormAction(string htmlPage, string formName = null);
     }
 }
