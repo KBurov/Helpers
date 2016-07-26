@@ -150,7 +150,7 @@ namespace Helpers.Common
                 }
             }
 
-            throw new HttpException("Could not process GET");
+            throw new HttpException($"Could not process {request.RequestUri}");
         }
     }
 }
