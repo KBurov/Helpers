@@ -118,7 +118,14 @@
     <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_not_empty_sources\with_not_null_comparer\when_call_MergeSortedEnumerable.cs" />
     <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_not_empty_sources\with_null_comparer\when_call_MergeSortedEnumerable.cs" />
     <Compile Include="given_EnumerableExtensions\witn_SortedEnumerable\with_null_sources\when_call_MergeSortedEnumerable.cs" />
-    <Compile Include="given_HttpHelper\Context.cs" />
+    <Compile Include="given_HttpHelper\HttpHelperContextBase.cs" />
+    <Compile Include="given_HttpHelper\with_empty_html_page\when_call_GetFormAction.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\HttpHelperContext.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\without_forms_in_html_page\when_call_GetFormAction.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_null_form_name\without_forms_in_html_page\when_call_GetFormAction.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_null_form_name\with_one_form_in_html_page\when_call_GetFormAction.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_null_form_name\with_several_forms_in_html_page\when_call_GetFormAction.cs" />
+    <Compile Include="given_HttpHelper\with_null_html_page\when_call_GetFormAction.cs" />
     <Compile Include="given_ReaderWriterLockSlim\with_not_null_locker\and_call_GetReadLock\when_call_TryEnterReadLock.cs" />
     <Compile Include="given_ReaderWriterLockSlim\with_not_null_locker\and_call_GetReadLock\when_call_TryEnterReadLock_from_another_thread.cs" />
     <Compile Include="given_ReaderWriterLockSlim\with_not_null_locker\and_call_GetReadLock\when_call_TryEnterUpgradeableReadLock.cs" />
@@ -176,7 +183,10 @@
       <Name>TestFramework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_one_form_in_html_page\" />
+    <Folder Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_several_forms_in_html_page\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

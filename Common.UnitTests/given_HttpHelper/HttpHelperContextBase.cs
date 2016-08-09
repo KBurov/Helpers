@@ -2,16 +2,11 @@
 
 namespace Helpers.Common.UnitTests.given_HttpHelper
 {
-    public abstract class Context : ContextBase
+    public abstract class HttpHelperContextBase : ContextBase
     {
         protected IHttpHelper _httpHelper;
 
-        protected Context()
-        {
-            SetUp();
-        }
-
-        protected sealed override void SetUp()
+        protected override void SetUp()
         {
             base.SetUp();
 

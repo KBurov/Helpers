@@ -78,6 +78,7 @@ namespace Helpers.Common
         IEnumerable<string> IHttpHelper.GetFormAction(string htmlPage, string formName)
         {
             Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(htmlPage), "htmlPage cannot be null or empty");
+            Contract.Ensures(Contract.Result<IEnumerable<string>>() != null);
 
             return default(IEnumerable<string>);
         }
