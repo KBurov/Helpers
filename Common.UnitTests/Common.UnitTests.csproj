@@ -122,6 +122,10 @@
     <Compile Include="given_HttpHelper\with_empty_html_page\when_call_GetFormAction.cs" />
     <Compile Include="given_HttpHelper\with_not_empty_html_page\HttpHelperContext.cs" />
     <Compile Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\without_forms_in_html_page\when_call_GetFormAction.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_one_form_in_html_page\when_call_GetFormAction_with_existing_form_name.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_one_form_in_html_page\when_call_GetFormAction_with_not_existing_form_name.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_several_forms_in_html_page\when_call_GetFormAction_with_existing_form_name.cs" />
+    <Compile Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_several_forms_in_html_page\when_call_GetFormAction_with_not_existing_form_name.cs" />
     <Compile Include="given_HttpHelper\with_not_empty_html_page\with_null_form_name\without_forms_in_html_page\when_call_GetFormAction.cs" />
     <Compile Include="given_HttpHelper\with_not_empty_html_page\with_null_form_name\with_one_form_in_html_page\when_call_GetFormAction.cs" />
     <Compile Include="given_HttpHelper\with_not_empty_html_page\with_null_form_name\with_several_forms_in_html_page\when_call_GetFormAction.cs" />
@@ -183,10 +187,7 @@
       <Name>TestFramework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_one_form_in_html_page\" />
-    <Folder Include="given_HttpHelper\with_not_empty_html_page\with_not_null_form_name\with_several_forms_in_html_page\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

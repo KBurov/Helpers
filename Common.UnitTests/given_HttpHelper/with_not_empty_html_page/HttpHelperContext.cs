@@ -10,9 +10,9 @@ namespace Helpers.Common.UnitTests.given_HttpHelper.with_not_empty_html_page
     {
         private const int FormCount = 3;
 
-        private IList<string> _formNames;
-
+        protected IList<string> _formNames;
         protected IList<string> _formActions;
+
         protected string _htmlPageWithoutForms;
         protected string _htmlPageWithOneFormNameActionOrder;
         protected string _htmlPageWithOneFormActionNameOrder;
