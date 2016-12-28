@@ -122,7 +122,7 @@ namespace Helpers.Common
                                 ? preferedDataEncoding?.GetBytes(postData) ?? Encoding.UTF8.GetBytes(postData)
                                 : new byte[0];
 
-            request.Method = "POST";
+            request.Method = WebRequestMethods.Http.Post;
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = postBytes.Length;
 
