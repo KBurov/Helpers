@@ -131,6 +131,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\DataException.cs" />
+    <Compile Include="Data\StorageBase.cs" />
+    <Compile Include="Data\StorageInitializationException.cs" />
     <Compile Include="DisposeAction.cs" />
     <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
