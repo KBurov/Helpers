@@ -16,6 +16,9 @@ namespace Helpers.Common
         /// <inheritdoc />
         public string Get(string url, Encoding preferedEncoding = null)
         {
+            if (string.IsNullOrEmpty(url))
+                throw new ArgumentException($"{nameof(url)} cannot be null or empty", nameof(url));
+
             var request = (HttpWebRequest) WebRequest.Create(url);
 
             return InternalGet(request, preferedEncoding);
@@ -24,6 +27,9 @@ namespace Helpers.Common
         /// <inheritdoc />
         public string Get(Uri uri, Encoding preferedEncoding)
         {
+            if (uri == null)
+                throw new ArgumentNullException(nameof(uri), $"{nameof(uri)} cannot be null");
+
             var request = (HttpWebRequest) WebRequest.Create(uri);
 
             return InternalGet(request, preferedEncoding);
@@ -32,6 +38,9 @@ namespace Helpers.Common
         /// <inheritdoc />
         public string Post(string url, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null)
         {
+            if (string.IsNullOrEmpty(url))
+                throw new ArgumentException($"{nameof(url)} cannot be null or empty", nameof(url));
+
             var request = (HttpWebRequest) WebRequest.Create(url);
 
             return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
@@ -40,6 +49,9 @@ namespace Helpers.Common
         /// <inheritdoc />
         public string Post(Uri uri, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null)
         {
+            if (uri == null)
+                throw new ArgumentNullException(nameof(uri), $"{nameof(uri)} cannot be null");
+
             var request = (HttpWebRequest) WebRequest.Create(uri);
 
             return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
