@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace Helpers.Common
@@ -8,7 +7,6 @@ namespace Helpers.Common
     /// <summary>
     /// Helper methods to GET/POST HTTP methods and process received HTML pages.
     /// </summary>
-    [ContractClass(typeof(IHttpHelperContract))]
     public interface IHttpHelper
     {
         /// <summary>

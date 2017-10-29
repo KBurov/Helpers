@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 
 namespace Helpers.Common.Extensions
 {
@@ -16,12 +15,11 @@ namespace Helpers.Common.Extensions
         public static string FirstCharToUpper(this string s)
         {
             // http://stackoverflow.com/questions/4135317/make-first-letter-of-a-string-upper-case-for-maximum-performance
-            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
-            Contract.Ensures(Contract.Result<string>() != null);
+            if (s == null)
+                throw new ArgumentNullException(nameof(s), $"{nameof(s)} cannot be null");
 
-            if (s.Length > 1) {
+            if (s.Length > 1)
                 return char.ToUpper(s[0]) + s.Substring(1);
-            }
 
             return s.ToUpper();
         }
@@ -34,12 +32,12 @@ namespace Helpers.Common.Extensions
         public static string SimpleReverse(this string s)
         {
             // TODO: Look at http://stackoverflow.com/questions/228038/best-way-to-reverse-a-string
-            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
-            Contract.Ensures(Contract.Result<string>() != null);
+            if (s == null)
+                throw new ArgumentNullException(nameof(s), $"{nameof(s)} cannot be null");
 
-            if (s == string.Empty) {
+            if (s == string.Empty)
                 return string.Empty;
-            }
+
 
             var charArray = s.ToCharArray();
             Array.Reverse(charArray);
@@ -55,11 +53,11 @@ namespace Helpers.Common.Extensions
         /// <returns>true is <paramref name="s"/> contains valid <see cref="int"/> value</returns>
         public static bool IsInt(this string s)
         {
-            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+            if (s == null)
+                throw new ArgumentNullException(nameof(s), $"{nameof(s)} cannot be null");
 
-            int dummy;
 
-            return !string.IsNullOrWhiteSpace(s) && int.TryParse(s, out dummy);
+            return !string.IsNullOrWhiteSpace(s) && int.TryParse(s, out var dummy);
         }
 
         /// <summary>
@@ -69,11 +67,11 @@ namespace Helpers.Common.Extensions
         /// <returns>true is <paramref name="s"/> contains valid <see cref="uint"/> value</returns>
         public static bool IsUInt(this string s)
         {
-            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+            if (s == null)
+                throw new ArgumentNullException(nameof(s), $"{nameof(s)} cannot be null");
 
-            uint dummy;
 
-            return !string.IsNullOrWhiteSpace(s) && uint.TryParse(s, out dummy);
+            return !string.IsNullOrWhiteSpace(s) && uint.TryParse(s, out var dummy);
         }
 
         /// <summary>
@@ -83,11 +81,11 @@ namespace Helpers.Common.Extensions
         /// <returns>true is <paramref name="s"/> contains valid <see cref="decimal"/> value</returns>
         public static bool IsDecimal(this string s)
         {
-            Contract.Requires<ArgumentNullException>(s != null, "s cannot be null");
+            if (s == null)
+                throw new ArgumentNullException(nameof(s), $"{nameof(s)} cannot be null");
 
-            decimal dummy;
 
-            return !string.IsNullOrWhiteSpace(s) && decimal.TryParse(s, out dummy);
+            return !string.IsNullOrWhiteSpace(s) && decimal.TryParse(s, out var dummy);
         }
         #endregion
     }

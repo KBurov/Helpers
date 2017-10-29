@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 using System.Threading;
 
 namespace Helpers.Common
@@ -17,7 +16,8 @@ namespace Helpers.Common
         /// <param name="timeoutInMilliseconds">delay between repeating action</param>
         public static void Times(Action action, uint numberOfRetries, uint? timeoutInMilliseconds = null)
         {
-            Contract.Requires<ArgumentNullException>(action != null, "action cannot be null");
+            if (action == null)
+                throw new ArgumentNullException(nameof(action), $"{nameof(action)} cannot be null");
 
             if (numberOfRetries > 0u) {
                 var repeat = true;
@@ -29,13 +29,11 @@ namespace Helpers.Common
                         repeat = false;
                     }
                     catch {
-                        if (--numberOfRetries == 0u) {
+                        if (--numberOfRetries == 0u)
                             throw;
-                        }
 
-                        if (timeoutInMilliseconds.HasValue) {
+                        if (timeoutInMilliseconds.HasValue)
                             Thread.Sleep((int) timeoutInMilliseconds.Value);
-                        }
                     }
                 }
             }
@@ -51,21 +49,21 @@ namespace Helpers.Common
         /// <returns>func result</returns>
         public static T Times<T>(Func<T> func, uint numberOfRetries, uint? timeoutInMilliseconds = null)
         {
-            Contract.Requires<ArgumentNullException>(func != null, "func cannot be null");
-            Contract.Requires<ArgumentException>(numberOfRetries > 0, "numberOfRetries should be greater than 0");
+            if (func == null)
+                throw new ArgumentNullException(nameof(func), $"{nameof(func)} cannot be null");
+            if (numberOfRetries == 0)
+                throw new ArgumentException($"{nameof(numberOfRetries)} should be greater than 0");
 
             while (true) {
                 try {
                     return func();
                 }
                 catch {
-                    if (--numberOfRetries == 0u) {
+                    if (--numberOfRetries == 0u)
                         throw;
-                    }
-
-                    if (timeoutInMilliseconds.HasValue) {
+                    // TODO: Replace Thread.Sleep with more modern implementation
+                    if (timeoutInMilliseconds.HasValue)
                         Thread.Sleep((int) timeoutInMilliseconds.Value);
-                    }
                 }
             }
         }

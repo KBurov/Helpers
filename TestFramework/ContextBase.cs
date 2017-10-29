@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 
 namespace Helpers.TestFramework
 {
@@ -23,12 +22,9 @@ namespace Helpers.TestFramework
 
         private void Dispose(bool disposing)
         {
-            Contract.Ensures(_disposed);
-
             if (!_disposed) {
-                if (disposing) {
+                if (disposing)
                     Cleanup();
-                }
 
                 _disposed = true;
             }
@@ -40,8 +36,6 @@ namespace Helpers.TestFramework
         /// </summary>
         protected ContextBase()
         {
-            Contract.Ensures(!_disposed);
-
             _disposed = false;
         }
 

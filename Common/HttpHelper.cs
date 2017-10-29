@@ -7,21 +7,13 @@ using System.Text.RegularExpressions;
 
 namespace Helpers.Common
 {
-    /// <summary>
-    /// Helper methods to GET/POST HTTP methods and process received HTML pages.
-    /// Implements <see cref="IHttpHelper"/>.
-    /// </summary>
+    /// <inheritdoc />
     public sealed class HttpHelper : IHttpHelper
     {
         private const RegexOptions RegularExpressionOptions = RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Singleline;
 
         #region IHttpHelper implementation
-        /// <summary>
-        /// Implements HTTP GET method.
-        /// </summary>
-        /// <param name="url">a URI that identifies the Internet resource</param>
-        /// <param name="preferedEncoding">a prefered encoding for received HTML page</param>
-        /// <returns>A result of HTTP GET method for provided parameters</returns>
+        /// <inheritdoc />
         public string Get(string url, Encoding preferedEncoding = null)
         {
             var request = (HttpWebRequest) WebRequest.Create(url);
@@ -29,12 +21,7 @@ namespace Helpers.Common
             return InternalGet(request, preferedEncoding);
         }
 
-        /// <summary>
-        /// Implements HTTP GET method.
-        /// </summary>
-        /// <param name="uri">a <see cref="Uri"/> containing the URI of the requested resource</param>
-        /// <param name="preferedEncoding">a prefered encoding for received HTML page</param>
-        /// <returns>A result of HTTP GET method for provided parameters</returns>
+        /// <inheritdoc />
         public string Get(Uri uri, Encoding preferedEncoding)
         {
             var request = (HttpWebRequest) WebRequest.Create(uri);
@@ -42,14 +29,7 @@ namespace Helpers.Common
             return InternalGet(request, preferedEncoding);
         }
 
-        /// <summary>
-        /// Implements HTTP POST method.
-        /// </summary>
-        /// <param name="url">a URI that identifies the Internet resource</param>
-        /// <param name="postData">a data which will be sent in POST</param>
-        /// <param name="preferedDataEncoding">a prefered encoding for <paramref name="postData"/></param>
-        /// <param name="preferedEncoding">a prefered encoding for result</param>
-        /// <returns>A result of HTTP POST method for provided parameters</returns>
+        /// <inheritdoc />
         public string Post(string url, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null)
         {
             var request = (HttpWebRequest) WebRequest.Create(url);
@@ -57,14 +37,7 @@ namespace Helpers.Common
             return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
         }
 
-        /// <summary>
-        /// Implements HTTP POST method.
-        /// </summary>
-        /// <param name="uri">a <see cref="Uri"/> containing the URI of the requested resource</param>
-        /// <param name="postData">a data which will be sent in POST</param>
-        /// <param name="preferedDataEncoding">a prefered encoding for <paramref name="postData"/></param>
-        /// <param name="preferedEncoding">a prefered encoding for result</param>
-        /// <returns>A result of HTTP POST method for provided parameters</returns>
+        /// <inheritdoc />
         public string Post(Uri uri, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null)
         {
             var request = (HttpWebRequest) WebRequest.Create(uri);
@@ -72,14 +45,12 @@ namespace Helpers.Common
             return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
         }
 
-        /// <summary>
-        /// Returns value of form "action" attribute.
-        /// </summary>
-        /// <param name="htmlPage">a HTML page content</param>
-        /// <param name="formName">a form name</param>
-        /// <returns>A collection of attribute "action" values</returns>
+        /// <inheritdoc />
         public IEnumerable<string> GetFormAction(string htmlPage, string formName = null)
         {
+            if (string.IsNullOrEmpty(htmlPage))
+                throw new ArgumentException($"{nameof(htmlPage)} cannot be null or empty");
+
             if (formName != null) {
                 var regex = new Regex(
                     $@"(?:<form[^>]*?(?:(?:name=""{formName}"")[^>]*?action=""(?<action1>[^""]*))|(?:action=""(?<action2>[^""]*)""[^>]*?(?:name=""{formName}"")))",

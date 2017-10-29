@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace Helpers.Common.Extensions
@@ -19,9 +18,10 @@ namespace Helpers.Common.Extensions
         /// <returns>object with <see cref="IEnumerator{T}"/> interface</returns>
         public static IEnumerable<T> MergeSortedEnumerable<T>(this IEnumerable<T>[] sources, IComparer<T> comparer)
         {
-            Contract.Requires<ArgumentNullException>(sources != null, "sources cannot be null");
-            Contract.Requires<ArgumentNullException>(comparer != null, "comparer cannot be null");
-            Contract.Ensures(Contract.Result<IEnumerable<T>>() != null);
+            if (sources == null)
+                throw new ArgumentNullException(nameof(sources), $"{nameof(sources)} cannot be null");
+            if (comparer == null)
+                throw new ArgumentNullException(nameof(comparer), $"{nameof(comparer)} cannot be null");
 
             switch (sources.Length) {
                 case 0:
@@ -45,24 +45,19 @@ namespace Helpers.Common.Extensions
             while (enumerators.Length > 0) {
                 yield return enumerators[0].Current;
 
-                if (!enumerators[0].MoveNext()) {
-                    enumerators = enumerators
-                        .Skip(1)
-                        .ToArray();
-                }
+                if (!enumerators[0].MoveNext())
+                    enumerators = enumerators.Skip(1).ToArray();
 
-                if (enumerators.Length > 1) {
-                    for (var i = 0;i < enumerators.Length - 1;++i) {
+                if (enumerators.Length > 1)
+                    for (var i = 0; i < enumerators.Length - 1; ++i) {
                         if (comparer.Compare(enumerators[i].Current, enumerators[i + 1].Current) > 0) {
                             var temp = enumerators[i + 1];
                             enumerators[i + 1] = enumerators[i];
                             enumerators[i] = temp;
                         }
-                        else {
+                        else
                             break;
-                        }
                     }
-                }
             }
         }
     }

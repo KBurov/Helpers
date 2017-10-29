@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 
 namespace Helpers.Common
 {
@@ -26,12 +25,9 @@ namespace Helpers.Common
 
         private void Dispose(bool disposing)
         {
-            Contract.Ensures(_disposed);
-
             if (!_disposed) {
-                if (disposing) {
+                if (disposing)
                     _disposeAction();
-                }
 
                 _disposed = true;
             }
@@ -45,11 +41,7 @@ namespace Helpers.Common
         /// <exception cref="ArgumentNullException"><paramref name="disposeAction" /> is null</exception>
         public DisposeAction(Action disposeAction)
         {
-            Contract.Requires<ArgumentNullException>(disposeAction != null, "disposeAction cannot be null");
-            Contract.Ensures(_disposeAction != null);
-            Contract.Ensures(!_disposed);
-
-            _disposeAction = disposeAction;
+            _disposeAction = disposeAction ?? throw new ArgumentNullException(nameof(disposeAction), $"{nameof(disposeAction)} cannot be null");
             _disposed = false;
         }
 
@@ -59,12 +51,6 @@ namespace Helpers.Common
         ~DisposeAction()
         {
             Dispose(false);
-        }
-
-        [ContractInvariantMethod]
-        private void Invariant()
-        {
-            Contract.Invariant(_disposeAction != null);
         }
     }
 }

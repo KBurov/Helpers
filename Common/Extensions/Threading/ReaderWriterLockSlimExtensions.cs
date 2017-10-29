@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.Contracts;
 using System.Threading;
 
 namespace Helpers.Common.Extensions.Threading
@@ -9,8 +8,6 @@ namespace Helpers.Common.Extensions.Threading
     /// </summary>
     public static class ReaderWriterLockSlimExtensions
     {
-        private const string LockerNullErrorMessage = "locker cannot be null";
-
         /// <summary>
         /// Get a <see cref="DisposeAction"/> object for read lock from <see cref="ReaderWriterLockSlim"/> object.
         /// </summary>
@@ -18,8 +15,8 @@ namespace Helpers.Common.Extensions.Threading
         /// <returns><see cref="DisposeAction"/> object</returns>
         public static IDisposable GetReadLock(this ReaderWriterLockSlim locker)
         {
-            Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
-            Contract.Ensures(Contract.Result<IDisposable>() != null);
+            if (locker == null)
+                throw new ArgumentNullException(nameof(locker), $"{nameof(locker)} cannot be null");
 
             locker.EnterReadLock();
 
@@ -33,8 +30,8 @@ namespace Helpers.Common.Extensions.Threading
         /// <returns><see cref="DisposeAction"/> object</returns>
         public static IDisposable GetUpgradeableReadLock(this ReaderWriterLockSlim locker)
         {
-            Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
-            Contract.Ensures(Contract.Result<IDisposable>() != null);
+            if (locker == null)
+                throw new ArgumentNullException(nameof(locker), $"{nameof(locker)} cannot be null");
 
             locker.EnterUpgradeableReadLock();
 
@@ -48,8 +45,8 @@ namespace Helpers.Common.Extensions.Threading
         /// <returns><see cref="DisposeAction"/> object</returns>
         public static IDisposable GetWriteLock(this ReaderWriterLockSlim locker)
         {
-            Contract.Requires<ArgumentNullException>(locker != null, LockerNullErrorMessage);
-            Contract.Ensures(Contract.Result<IDisposable>() != null);
+            if (locker == null)
+                throw new ArgumentNullException(nameof(locker), $"{nameof(locker)} cannot be null");
 
             locker.EnterWriteLock();
 

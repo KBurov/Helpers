@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Data.Common;
-using System.Diagnostics.Contracts;
 
 namespace Helpers.Common.Data
 {
@@ -31,23 +30,19 @@ namespace Helpers.Common.Data
         /// <param name="timeoutInSeconds">the wait time before terminating the attempt to execute a command and generating an error</param>
         protected StorageBase(string connectionString, int timeoutInSeconds = 30)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(connectionString), "connectionString cannot be null or empty");
-            Contract.Ensures(DbFactory != null);
-            Contract.Ensures(Connection != null);
-            Contract.Ensures(TimeoutInSeconds == timeoutInSeconds);
+            if (string.IsNullOrEmpty(connectionString))
+                throw new ArgumentException($"{nameof(connectionString)} cannot be null or empty", nameof(connectionString));
 
             TimeoutInSeconds = timeoutInSeconds;
             DbFactory = DbProviderFactories.GetFactory(connectionString);
 
-            if (DbFactory == null) {
+            if (DbFactory == null)
                 throw new StorageInitializationException("Cannot create DB provider factory object");
-            }
 
             Connection = DbFactory.CreateConnection();
 
-            if (Connection == null) {
+            if (Connection == null)
                 throw new StorageInitializationException("Cannot create connection object");
-            }
 
             Connection.ConnectionString = connectionString;
         }
@@ -60,19 +55,15 @@ namespace Helpers.Common.Data
         /// <param name="timeoutInSeconds">the wait time before terminating the attempt to execute a command and generating an error</param>
         protected StorageBase(string connectionString, DbProviderFactory dbFactory, int timeoutInSeconds = 30)
         {
-            Contract.Requires<ArgumentException>(!string.IsNullOrEmpty(connectionString), "connectionString cannot be null or empty");
-            Contract.Requires<ArgumentNullException>(dbFactory != null, "dbFactory cannot be null");
-            Contract.Ensures(DbFactory != null);
-            Contract.Ensures(Connection != null);
-            Contract.Ensures(TimeoutInSeconds == timeoutInSeconds);
+            if (string.IsNullOrEmpty(connectionString))
+                throw new ArgumentException($"{nameof(connectionString)} cannot be null or empty", nameof(connectionString));
 
+            DbFactory = dbFactory ?? throw new ArgumentNullException(nameof(dbFactory), $"{nameof(dbFactory)} cannot be null");
             TimeoutInSeconds = timeoutInSeconds;
-            DbFactory = dbFactory;
             Connection = DbFactory.CreateConnection();
 
-            if (Connection == null) {
+            if (Connection == null)
                 throw new StorageInitializationException("Cannot create connection object");
-            }
 
             Connection.ConnectionString = connectionString;
         }
@@ -84,13 +75,10 @@ namespace Helpers.Common.Data
         /// <returns>a new instance of <see cref="DbCommand"/></returns>
         protected virtual DbCommand CreateCommand(string commandText)
         {
-            Contract.Ensures(Contract.Result<DbCommand>() != null);
-
             var command = DbFactory.CreateCommand();
 
-            if (command == null) {
+            if (command == null)
                 throw new StorageInitializationException("Cannot create command object");
-            }
 
             command.CommandText = commandText;
             command.CommandTimeout = TimeoutInSeconds;
