@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 using Xunit;
 
@@ -14,7 +15,7 @@ namespace Helpers.Common.UnitTests.given_HttpHelper.with_null_html_page
         [Fact]
         public void then_throws_exception()
         {
-            Assert.Throws<ArgumentException>(() => _httpHelper.GetFormAction(string.Empty));
+            Assert.Throws<ArgumentException>(() => _httpHelper.GetFormAction(string.Empty).ToList());
         }
     }
 }
