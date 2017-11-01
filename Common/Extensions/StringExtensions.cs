@@ -118,56 +118,54 @@ namespace Helpers.Common.Extensions
 
         #region Parse... methods
         /// <summary>
-        /// 
+        /// Returns converted from <paramref name="str"/> integer value if it possible, otherwise null.
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
+        /// <param name="str">the string to convert</param>
+        /// <returns>converted from <paramref name="str"/> integer value if it possible, otherwise null</returns>
         public static int? ParseInt(this string str)
         {
             if (str.IsEmpty())
                 return null;
 
-            return int.TryParse(str, out var result) ? result : (int?)null;
+            return int.TryParse(str, out var result) ? result : (int?) null;
         }
 
         /// <summary>
-        /// 
+        /// Returns converted from <paramref name="str"/> decimal value if it possible, otherwise null.
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
+        /// <param name="str">the string to convert</param>
+        /// <returns>converted from <paramref name="str"/> decimal value if it possible, otherwise null</returns>
         public static decimal? ParseDecimal(this string str)
         {
             if (str.IsEmpty())
                 return null;
 
-            try
-            {
+            try {
                 return decimal.Parse(str);
             }
-            catch (FormatException)
-            {
+            catch (FormatException) {
                 return decimal.Parse(str, NumberStyles.Float);
             }
         }
 
         /// <summary>
-        /// 
+        /// Returns converted from <paramref name="str"/> double value if it possible, otherwise null.
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
+        /// <param name="str">the string to convert</param>
+        /// <returns>converted from <paramref name="str"/> double value if it possible, otherwise null</returns>
         public static double? ParseDouble(this string str)
         {
             if (str.IsEmpty())
                 return null;
 
-            return double.TryParse(str, out var result) ? result : (double?)null;
+            return double.TryParse(str, out var result) ? result : (double?) null;
         }
 
         /// <summary>
-        /// 
+        /// Returns converted from <paramref name="str"/> date value if it possible, otherwise null.
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
+        /// <param name="str">the string to convert</param>
+        /// <returns>converted from <paramref name="str"/> date value if it possible, otherwise null</returns>
         public static DateTime? ParseDate(this string str)
         {
             if (str.IsEmpty())
@@ -180,10 +178,10 @@ namespace Helpers.Common.Extensions
         }
 
         /// <summary>
-        /// 
+        /// Returns converted from <paramref name="str"/> time value if it possible, otherwise null.
         /// </summary>
-        /// <param name="str"></param>
-        /// <returns></returns>
+        /// <param name="str">the string to convert</param>
+        /// <returns>converted from <paramref name="str"/> time value if it possible, otherwise null</returns>
         public static TimeSpan? ParseTime(this string str)
         {
             if (str.IsEmpty())
