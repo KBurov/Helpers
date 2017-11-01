@@ -54,6 +54,7 @@
     <Compile Include="HttpException.cs" />
     <Compile Include="HttpHelper.cs" />
     <Compile Include="IHttpHelper.cs" />
+    <Compile Include="IO\FileUtilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retry.cs" />
   </ItemGroup>
