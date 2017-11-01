@@ -22,14 +22,14 @@ namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string
 
             var regex = new Regex("^\\d+");
 
-            _sut = regex.Replace(_sut, string.Empty).ToLower();
-            _expectedChar = char.ToUpper(_sut[0], CultureInfo.InvariantCulture);
+            _str = regex.Replace(_str, string.Empty).ToLower();
+            _expectedChar = char.ToUpper(_str[0], CultureInfo.InvariantCulture);
         }
 
         [Fact]
         public void then_returns_string_with_the_first_capital_letter()
         {
-            var result = _sut.FirstCharToUpper();
+            var result = _str.FirstCharToUpper();
 
             Assert.Equal(_expectedChar, result[0]);
         }

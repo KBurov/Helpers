@@ -117,17 +117,33 @@
     <Compile Include="given_StringExtensions\with_empty_string\Context.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_FirstCharToUpper.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsDecimal.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_IsEmpty.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsInt.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_IsUInt.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_ParseDate.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_ParseDecimal.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_ParseDouble.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_ParseInt.cs" />
+    <Compile Include="given_StringExtensions\with_empty_string\when_call_ParseTime.cs" />
     <Compile Include="given_StringExtensions\with_empty_string\when_call_SimpleReverse.cs" />
     <Compile Include="given_StringExtensions\with_not_empty_string\Context.cs" />
     <Compile Include="given_StringExtensions\with_not_empty_string\when_call_FirstCharToUpper.cs" />
     <Compile Include="given_StringExtensions\with_not_empty_string\when_call_SimpleReverse.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\with_empty_EmptyValues\when_call_IsEmpty.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\with_filled_EmptyValues\ContextWithEmptyValues.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\with_filled_EmptyValues\with_string_from_EmptyValues\when_call_IsEmpty.cs" />
+    <Compile Include="given_StringExtensions\with_not_empty_string\with_filled_EmptyValues\with_string_not_from_EmptyValues\when_call_IsEmpty.cs" />
     <Compile Include="given_StringExtensions\with_null_string\Context.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_FirstCharToUpper.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsDecimal.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_IsEmpty.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsInt.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_IsUInt.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_ParseDate.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_ParseDecimal.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_ParseDouble.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_ParseInt.cs" />
+    <Compile Include="given_StringExtensions\with_null_string\when_call_ParseTime.cs" />
     <Compile Include="given_StringExtensions\with_null_string\when_call_SimpleReverse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -147,6 +163,7 @@
   <ItemGroup>
     <Analyzer Include="..\packages\xunit.analyzers.0.7.0\analyzers\dotnet\cs\xunit.analyzers.dll" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

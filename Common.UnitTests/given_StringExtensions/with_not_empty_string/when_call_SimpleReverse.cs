@@ -19,13 +19,13 @@ namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string
         {
             base.SetUp();
 
-            _expectedValue = new string(Enumerable.Reverse(_sut).ToArray());
+            _expectedValue = new string(Enumerable.Reverse(_str).ToArray());
         }
 
         [Fact]
         public void then_returns_with_reverted_value()
         {
-            var result = _sut.SimpleReverse();
+            var result = _str.SimpleReverse();
 
             Assert.Equal(_expectedValue, result);
         }

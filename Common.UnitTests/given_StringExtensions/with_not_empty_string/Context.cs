@@ -6,7 +6,7 @@ namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string
 {
     public abstract class Context : ContextBase
     {
-        protected string _sut;
+        protected string _str;
 
         protected override void SetUp()
         {
@@ -14,7 +14,7 @@ namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string
 
             var fixture = new Fixture();
 
-            _sut = fixture.Create<string>();
+            _str = fixture.Create<string>();
         }
     }
 }
