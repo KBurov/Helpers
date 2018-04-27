@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-using Ploeh.AutoFixture;
+using AutoFixture;
 
 namespace Helpers.Common.UnitTests.given_HttpHelper.with_not_empty_html_page
 {
@@ -24,8 +24,8 @@ namespace Helpers.Common.UnitTests.given_HttpHelper.with_not_empty_html_page
 
             var fixture = new Fixture {RepeatCount = FormCount};
 
-            _formNames = fixture.CreateMany("Form").ToList();
-            _formActions = fixture.CreateMany("Action").ToList();
+            _formNames = fixture.CreateMany<string>().ToList();
+            _formActions = fixture.CreateMany<string>().ToList();
 
             _htmlPageWithoutForms = fixture.Create<string>();
             _htmlPageWithOneFormNameActionOrder = $"{_htmlPageWithoutForms}<form name=\"{_formNames[0]}\" action=\"{_formActions[0]}\">{_htmlPageWithoutForms}";

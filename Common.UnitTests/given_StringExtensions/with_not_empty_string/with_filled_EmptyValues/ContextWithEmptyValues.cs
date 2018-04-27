@@ -1,6 +1,6 @@
-﻿using Helpers.Common.Extensions;
+﻿using AutoFixture;
 
-using Ploeh.AutoFixture;
+using Helpers.Common.Extensions;
 
 namespace Helpers.Common.UnitTests.given_StringExtensions.with_not_empty_string.with_filled_EmptyValues
 {

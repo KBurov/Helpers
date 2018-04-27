@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-using Helpers.TestFramework;
+using AutoFixture;
 
-using Ploeh.AutoFixture;
+using Helpers.TestFramework;
 
 namespace Helpers.Common.UnitTests.given_EnumerableExtensions.witn_SortedEnumerable.with_not_empty_sources
 {
