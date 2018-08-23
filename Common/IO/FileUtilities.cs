@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Helpers.Common.IO
 {
@@ -52,27 +54,56 @@ namespace Helpers.Common.IO
         }
 
         /// <summary>
-        /// 
+        /// Move file from <paramref name="filePath"/> to the folder <paramref name="directoryName"/>.
         /// </summary>
-        /// <param name="path"></param>
-        /// <param name="doneDirectory"></param>
-        public static void MoveDoneFile(string path, string doneDirectory)
+        /// <param name="filePath">path to source file</param>
+        /// <param name="directoryName">the relative or absolute path to the directory to move</param>
+        public static void MoveFile(string filePath, string directoryName)
         {
-            var fileName = Path.GetFileName(path);
+            var fileName = Path.GetFileName(filePath);
 
             if (fileName != null) {
-                var newFilePath = Path.Combine(doneDirectory, fileName);
+                var newFilePath = Path.Combine(directoryName, fileName);
                 var i = 0;
 
                 while (File.Exists(newFilePath)) {
                     i++;
                     newFilePath = Path.Combine(
-                        doneDirectory,
-                        $"{Path.GetFileNameWithoutExtension(path)}_{DateTime.Today.Year:D4}_{DateTime.Today.Month:D2}_{DateTime.Today.Day:D2}_{i:D4}{Path.GetExtension(path)}");
+                        directoryName,
+                        $"{Path.GetFileNameWithoutExtension(filePath)}_{DateTime.Today.Year:D4}_{DateTime.Today.Month:D2}_{DateTime.Today.Day:D2}_{i:D4}{Path.GetExtension(filePath)}");
                 }
 
-                File.Move(path, newFilePath);
+                File.Move(filePath, newFilePath);
             }
+        }
+
+        /// <summary>
+        /// Check all files in <paramref name="directoryName"/> folder and remove duplicates based on MD5 hash value.
+        /// </summary>
+        /// <param name="directoryName">the relative or absolute path to the directory to remove duplicates</param>
+        public static void RemoveDuplicatedFiles(string directoryName)
+        {
+            var filePaths = Directory.GetFileSystemEntries(directoryName);
+            var existingMd5 = new HashSet<string>();
+
+            foreach (var filePath in filePaths) {
+                var newFileMd5 = CalculateMd5(filePath);
+
+                if (existingMd5.Contains(newFileMd5)) {
+                    File.Delete(filePath);
+
+                    continue;
+                }
+
+                existingMd5.Add(newFileMd5);
+            }
+        }
+
+        private static string CalculateMd5(string filePath)
+        {
+            using (var md5 = MD5.Create())
+            using (var stream = File.OpenRead(filePath))
+                return Encoding.Default.GetString(md5.ComputeHash(stream));
         }
     }
 }
