@@ -171,10 +171,15 @@ namespace Helpers.Common.Extensions
             if (str.IsEmpty())
                 return null;
 
-            return new DateTime(
-                int.Parse(str.Substring(0, 4)),
-                int.Parse(str.Substring(4, 2)),
-                int.Parse(str.Substring(6, 2)));
+            return str.IndexOf("-", StringComparison.InvariantCultureIgnoreCase) >= 0
+                ? new DateTime(
+                    int.Parse(str.Substring(0, 4)),
+                    int.Parse(str.Substring(5, 2)),
+                    int.Parse(str.Substring(8, 2)))
+                : new DateTime(
+                    int.Parse(str.Substring(0, 4)),
+                    int.Parse(str.Substring(4, 2)),
+                    int.Parse(str.Substring(6, 2)));
         }
 
         /// <summary>
