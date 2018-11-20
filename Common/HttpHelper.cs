@@ -36,25 +36,35 @@ namespace Helpers.Common
         }
 
         /// <inheritdoc />
-        public string Post(string url, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null)
+        public string Post(
+            string url,
+            string postData = null,
+            Encoding preferedDataEncoding = null,
+            Encoding preferedEncoding = null,
+            string contentType = "application/x-www-form-urlencoded")
         {
             if (string.IsNullOrEmpty(url))
                 throw new ArgumentException($"{nameof(url)} cannot be null or empty", nameof(url));
 
             var request = (HttpWebRequest) WebRequest.Create(url);
 
-            return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
+            return InternalPost(request, postData, preferedDataEncoding, preferedEncoding, contentType);
         }
 
         /// <inheritdoc />
-        public string Post(Uri uri, string postData = null, Encoding preferedDataEncoding = null, Encoding preferedEncoding = null)
+        public string Post(
+            Uri uri,
+            string postData = null,
+            Encoding preferedDataEncoding = null,
+            Encoding preferedEncoding = null,
+            string contentType = "application/x-www-form-urlencoded")
         {
             if (uri == null)
                 throw new ArgumentNullException(nameof(uri), $"{nameof(uri)} cannot be null");
 
             var request = (HttpWebRequest) WebRequest.Create(uri);
 
-            return InternalPost(request, postData, preferedDataEncoding, preferedEncoding);
+            return InternalPost(request, postData, preferedDataEncoding, preferedEncoding, contentType);
         }
 
         /// <inheritdoc />
@@ -99,14 +109,19 @@ namespace Helpers.Common
             return InternalProcessReceiveStream(request, preferedEncoding);
         }
 
-        private static string InternalPost(HttpWebRequest request, string postData, Encoding preferedDataEncoding, Encoding preferedEncoding)
+        private static string InternalPost(
+            HttpWebRequest request,
+            string postData,
+            Encoding preferedDataEncoding,
+            Encoding preferedEncoding,
+            string contentType)
         {
             var postBytes = postData != null
-                                ? preferedDataEncoding?.GetBytes(postData) ?? Encoding.UTF8.GetBytes(postData)
-                                : new byte[0];
+                ? preferedDataEncoding?.GetBytes(postData) ?? Encoding.UTF8.GetBytes(postData)
+                : new byte[0];
 
             request.Method = WebRequestMethods.Http.Post;
-            request.ContentType = "application/x-www-form-urlencoded";
+            request.ContentType = contentType;
             request.ContentLength = postBytes.Length;
 
             var postStream = request.GetRequestStream();
