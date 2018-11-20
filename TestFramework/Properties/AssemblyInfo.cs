@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Wanderer")]
 [assembly: AssemblyProduct("Helpers.TestFramework")]
-[assembly: AssemblyCopyright("Copyright © Wanderer 2016")]
+[assembly: AssemblyCopyright("Copyright © Wanderer 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
