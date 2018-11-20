@@ -44,6 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IAffineGapCost.cs" />
+    <Compile Include="Base\IStringMetric.cs" />
+    <Compile Include="Base\ISubstitutionCost.cs" />
+    <Compile Include="Base\ITermHandler.cs" />
+    <Compile Include="Base\ITokeniser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
