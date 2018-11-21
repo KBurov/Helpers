@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Text;
 
 using Helpers.StringSim.Utils.Tokenisers;
@@ -43,13 +43,14 @@ namespace Helpers.StringSim.Base
 
         #region ITokeniser implementation
         /// <inheritdoc />
-        public abstract Collection<string> Tokenize(string word);
+        public abstract IList<string> Tokenize(string word);
 
         /// <inheritdoc />
-        public Collection<string> TokenizeToSet(string word)
+        public ISet<string> TokenizeToSet(string word)
         {
             if (!string.IsNullOrEmpty(word)) {
                 SuppliedWord = word;
+
                 return TokenUtilities.CreateSet(Tokenize(word));
             }
 
@@ -67,7 +68,7 @@ namespace Helpers.StringSim.Base
         #endregion
 
         /// <summary>
-        /// full version of Tokenise which allows for different token lengths
+        /// Full version of Tokenise which allows for different token lengths
         /// as well as the characterCombinationIndexValue error level as well.
         /// </summary>
         /// <param name="word">word to tokenise</param>
@@ -75,12 +76,12 @@ namespace Helpers.StringSim.Base
         /// <param name="tokenLength">length of tokens</param>
         /// <param name="characterCombinationIndexValue">error level for skip tokens</param>
         /// <returns>collection of tokens</returns>
-        public Collection<string> Tokenize(string word, bool extended, int tokenLength, int characterCombinationIndexValue)
+        public IList<string> Tokenize(string word, bool extended, int tokenLength, int characterCombinationIndexValue)
         {
             if (!string.IsNullOrEmpty(word)) {
                 SuppliedWord = word;
 
-                var anArray = new Collection<string>();
+                var tokens = new List<string>();
                 var wordLength = word.Length;
                 var maxValue = 0;
 
@@ -109,7 +110,7 @@ namespace Helpers.StringSim.Base
                     var testWord = testWordOne.Substring(i, tokenLength);
 
                     if (!StopWordHandler.IsWord(testWord))
-                        anArray.Add(testWord);
+                        tokens.Add(testWord);
                 }
 
                 if (characterCombinationIndexValue != 0) {
@@ -120,12 +121,12 @@ namespace Helpers.StringSim.Base
                     for (var i = 0;i < maxLoop;i++) {
                         var testWord = testWordOne.Substring(i, maxValue) + testWordOne.Substring(i + tokenLength, 1);
 
-                        if (!StopWordHandler.IsWord(testWord) && !anArray.Contains(testWord))
-                            anArray.Add(testWord);
+                        if (!StopWordHandler.IsWord(testWord) && !tokens.Contains(testWord))
+                            tokens.Add(testWord);
                     }
                 }
 
-                return anArray;
+                return tokens;
             }
 
             return null;

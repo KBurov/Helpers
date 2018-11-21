@@ -54,6 +54,11 @@
     <Compile Include="Base\ITermHandler.cs" />
     <Compile Include="Base\ITokeniser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\CostFuncs\AffineGapRange1To0Multiplier1Over3.cs" />
+    <Compile Include="Utils\CostFuncs\AffineGapRange5To0Multiplier1.cs" />
+    <Compile Include="Utils\CostFuncs\SubCostRange0To1.cs" />
+    <Compile Include="Utils\CostFuncs\SubCostRange1ToMinus2.cs" />
+    <Compile Include="Utils\CostFuncs\SubCostRange5ToMinus3.cs" />
     <Compile Include="Utils\MathFuncs.cs" />
     <Compile Include="Utils\Tokenisers\TokeniserUtilities.cs" />
     <Compile Include="Utils\WordHandlers\DummyStopTermHandler.cs" />

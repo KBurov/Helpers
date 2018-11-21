@@ -3,7 +3,7 @@
 namespace Helpers.StringSim.Base
 {
     /// <summary>
-    ///  Class used as a base for all affine gap classes.
+    /// Class used as a base for all affine gap classes.
     /// </summary>
     [Serializable]
     public abstract class AbstractAffineGapCost : IAffineGapCost

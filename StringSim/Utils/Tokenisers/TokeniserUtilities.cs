@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace Helpers.StringSim.Utils.Tokenisers
 {
@@ -25,7 +25,7 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// <summary>
         /// Merged token List (unique tokens only).
         /// </summary>
-        public Collection<T> MergedTokens { get; }
+        public IList<T> MergedTokens { get; }
 
         /// <summary>
         /// Token count from second token list.
@@ -40,15 +40,15 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// <summary>
         /// Merged token List (unique tokens only).
         /// </summary>
-        public Collection<T> TokenSet { get; }
+        public ISet<T> TokenSet { get; }
 
         /// <summary>
         /// Default constructor.
         /// </summary>
         public TokeniserUtilities()
         {
-            MergedTokens = new Collection<T>();
-            TokenSet = new Collection<T>();
+            MergedTokens = new List<T>();
+            TokenSet = new HashSet<T>();
         }
 
         /// <summary>
@@ -75,15 +75,17 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// <param name="firstTokens">first token list</param>
         /// <param name="secondTokens">second token list</param>
         /// <returns>list of all tokens</returns>
-        public Collection<T> CreateMergedList(Collection<T> firstTokens, Collection<T> secondTokens)
+        public IList<T> CreateMergedList(IEnumerable<T> firstTokens, IEnumerable<T> secondTokens)
         {
             MergedTokens.Clear();
 
-            FirstTokenCount = firstTokens.Count;
-            SecondTokenCount = secondTokens.Count;
-
             MergeLists(firstTokens);
+
+            FirstTokenCount = MergedTokens.Count;
+
             MergeLists(secondTokens);
+
+            SecondTokenCount = MergedTokens.Count - FirstSetTokenCount;
 
             return MergedTokens;
         }
@@ -94,15 +96,17 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// <param name="firstTokens">first token list</param>
         /// <param name="secondTokens">second token list</param>
         /// <returns>list of unique tokens</returns>
-        public Collection<T> CreateMergedSet(Collection<T> firstTokens, Collection<T> secondTokens)
+        public ISet<T> CreateMergedSet(IEnumerable<T> firstTokens, IEnumerable<T> secondTokens)
         {
             TokenSet.Clear();
 
-            FirstSetTokenCount = CalculateUniqueTokensCount(firstTokens);
-            SecondSetTokenCount = CalculateUniqueTokensCount(secondTokens);
-
             MergeIntoSet(firstTokens);
+
+            FirstSetTokenCount = TokenSet.Count;
+
             MergeIntoSet(secondTokens);
+
+            SecondSetTokenCount = TokenSet.Count - FirstSetTokenCount;
 
             return TokenSet;
         }
@@ -112,7 +116,7 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// </summary>
         /// <param name="tokenList">token list to use</param>
         /// <returns>unique token list - sorted</returns>
-        public Collection<T> CreateSet(Collection<T> tokenList)
+        public ISet<T> CreateSet(IEnumerable<T> tokenList)
         {
             TokenSet.Clear();
 
@@ -128,7 +132,7 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// Merging extra token lists into the set.
         /// </summary>
         /// <param name="firstTokens">token list to merge</param>
-        public void MergeIntoSet(Collection<T> firstTokens)
+        public void MergeIntoSet(IEnumerable<T> firstTokens)
         {
             AddUniqueTokens(firstTokens);
         }
@@ -137,33 +141,21 @@ namespace Helpers.StringSim.Utils.Tokenisers
         /// Merging into the list.
         /// </summary>
         /// <param name="firstTokens">token list to merge</param>
-        public void MergeLists(Collection<T> firstTokens)
+        public void MergeLists(IEnumerable<T> firstTokens)
         {
             AddTokens(firstTokens);
         }
 
-        private void AddTokens(Collection<T> tokenList)
+        private void AddTokens(IEnumerable<T> tokenList)
         {
             foreach (var token in tokenList)
                 MergedTokens.Add(token);
         }
 
-        private void AddUniqueTokens(Collection<T> tokenList)
+        private void AddUniqueTokens(IEnumerable<T> tokenList)
         {
             foreach (var token in tokenList)
-                if (!TokenSet.Contains(token))
-                    TokenSet.Add(token);
-        }
-
-        private int CalculateUniqueTokensCount(Collection<T> tokenList)
-        {
-            var myList = new Collection<T>();
-
-            foreach (var token in tokenList)
-                if (!myList.Contains(token))
-                    myList.Add(token);
-
-            return myList.Count;
+                TokenSet.Add(token);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Helpers.StringSim.Utils.WordHandlers
     /// </summary>
     public sealed class DummyStopTermHandler : ITermHandler
     {
-        #region ITermHandler implementation
         /// <inheritdoc />
         public void AddWord(string termToAdd) {}
 
@@ -27,6 +26,5 @@ namespace Helpers.StringSim.Utils.WordHandlers
 
         /// <inheritdoc />
         public StringBuilder WordsAsBuffer => new StringBuilder();
-        #endregion
     }
 }

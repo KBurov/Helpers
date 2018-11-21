@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
 
 namespace Helpers.StringSim.Base
 {
@@ -12,14 +12,14 @@ namespace Helpers.StringSim.Base
         /// </summary>
         /// <param name="word"></param>
         /// <returns>tokenized version of a string</returns>
-        Collection<string> Tokenize(string word);
+        IList<string> Tokenize(string word);
 
         /// <summary>
         /// Return tokenized version of a string as a set.
         /// </summary>
         /// <param name="word"></param>
         /// <returns>tokenized version of a string as a set</returns>
-        Collection<string> TokenizeToSet(string word);
+        ISet<string> TokenizeToSet(string word);
 
         /// <summary>
         /// Gets the delimitors used - (if applicable).
